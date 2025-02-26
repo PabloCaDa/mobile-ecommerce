@@ -1,10 +1,10 @@
-import { RouteObject } from "react-router-dom";
-import { Cart, Home, PhoneDetails, Phones } from "./pages";
+import { Navigate, RouteObject } from "react-router-dom";
+import { Cart, PhoneDetails, Phones } from "./pages";
 
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Home />,
+    element: <Navigate to="/phones" />,
   },
   {
     path: "/cart",
