@@ -47,12 +47,8 @@ class ApiClient {
     return response.data;
   }
 
-  async delete<T>(
-    path: string,
-    data: Record<string, unknown>,
-    config?: AxiosRequestConfig
-  ) {
-    const response = await this.axiosInstance.put<T>(path, data, config);
+  async delete<T>(path: string, config?: AxiosRequestConfig) {
+    const response = await this.axiosInstance.delete<T>(path, config);
     return response.data;
   }
 }
