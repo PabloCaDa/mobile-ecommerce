@@ -5,7 +5,6 @@ import { PageLayoutProps } from "@/types";
 
 export const LayoutSwitcher = ({ children }: PageLayoutProps) => {
   const location = useLocation();
-  console.log(location.pathname);
   const isPhoneDetailsPage = !!matchPath("/phones/:id", location.pathname);
 
   if (isPhoneDetailsPage) {
