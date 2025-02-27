@@ -2,12 +2,12 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { getPhones } from "@/lib/api/services/phoneService";
 
 import { removeDuplicatesById } from "@/lib/utils/removeDuplicatesById";
-import { IUsePhones } from "@/types/phone";
+import { IPhone, IUsePhones } from "@/types/phone";
 import { useEffect, useState } from "react";
 
 export const usePhones = (search: string, limit: number): IUsePhones => {
   const initialPageParam = 1;
-  const [previousPhones, setPreviousPhones] = useState<any[]>([]);
+  const [previousPhones, setPreviousPhones] = useState<IPhone[]>([]);
 
   const {
     error,
