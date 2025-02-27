@@ -1,4 +1,4 @@
-import { PaginatedQuery } from "./query";
+import { PaginatedQuery, Query } from "./query";
 
 export interface IPhone {
   id: string;
@@ -41,4 +41,8 @@ export interface IPhoneDetails extends Omit<IPhone, "imageUrl"> {
 
 export interface IUsePhones extends PaginatedQuery {
   phones: IPhone[];
+}
+
+export interface IUsePhone extends Query {
+  phone: IPhoneDetails;
 }
