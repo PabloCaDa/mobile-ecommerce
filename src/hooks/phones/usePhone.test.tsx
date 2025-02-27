@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { useQuery } from "@tanstack/react-query";
 import { usePhone } from "./usePhone";
-import { IPhoneDetails } from "../../types/phone";
+import { IPhoneDetails } from "@/types/phone";
 import { mockPhoneFixture } from "@/test/__fixtures__/phones";
 
 jest.mock("@tanstack/react-query", () => ({
