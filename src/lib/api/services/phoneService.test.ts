@@ -1,5 +1,8 @@
 import { getPhones, getPhoneById } from "./phoneService";
-import { mockPhone, mockPhones } from "@/test/__mocks__/phones";
+import {
+  mockPhoneFixture,
+  mockPhonesFixture,
+} from "@/test/__fixtures__/phones";
 import { IPhone, IPhoneDetails } from "@/types/phone";
 import apiClient from "@/lib/api/client";
 
@@ -26,7 +29,7 @@ describe("phoneService", () => {
 
     describe("when no search parameter is provided", () => {
       beforeEach(async () => {
-        (apiClient.get as jest.Mock).mockResolvedValue(mockPhones);
+        (apiClient.get as jest.Mock).mockResolvedValue(mockPhonesFixture);
 
         result = await getPhones();
       });
@@ -35,13 +38,13 @@ describe("phoneService", () => {
         expect(apiClient.get).toHaveBeenCalledWith(
           "products?limit=20&offset=0"
         );
-        expect(result).toEqual(mockPhones);
+        expect(result).toEqual(mockPhonesFixture);
       });
     });
 
     describe("when search parameter is provided", () => {
       beforeEach(async () => {
-        (apiClient.get as jest.Mock).mockResolvedValue(mockPhones);
+        (apiClient.get as jest.Mock).mockResolvedValue(mockPhonesFixture);
 
         result = await getPhones("test");
       });
@@ -50,7 +53,7 @@ describe("phoneService", () => {
         expect(apiClient.get).toHaveBeenCalledWith(
           "products?limit=20&offset=0&search=test"
         );
-        expect(result).toEqual(mockPhones);
+        expect(result).toEqual(mockPhonesFixture);
       });
     });
   });
@@ -59,14 +62,14 @@ describe("phoneService", () => {
     let result: IPhoneDetails;
 
     beforeEach(async () => {
-      (apiClient.get as jest.Mock).mockResolvedValue(mockPhone);
+      (apiClient.get as jest.Mock).mockResolvedValue(mockPhoneFixture);
 
       result = await getPhoneById("1");
     });
 
     it("should fetch phone by id", async () => {
       expect(apiClient.get).toHaveBeenCalledWith("products/1");
-      expect(result).toEqual(mockPhone);
+      expect(result).toEqual(mockPhoneFixture);
     });
   });
 });

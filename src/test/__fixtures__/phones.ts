@@ -1,6 +1,6 @@
 import { IPhone, IPhoneDetails } from "@/types/phone";
 
-export const mockPhones: IPhone[] = [
+export const mockPhonesFixture: IPhone[] = [
   {
     id: "1",
     name: "Phone name",
@@ -17,7 +17,7 @@ export const mockPhones: IPhone[] = [
   },
 ];
 
-export const mockPhone: IPhoneDetails = {
+export const mockPhoneFixture: IPhoneDetails = {
   id: "1",
   name: "Phone name",
   brand: "Phone Brand",
