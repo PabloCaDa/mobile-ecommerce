@@ -1,13 +1,9 @@
 import { RestrictedContainerLayout } from "./RestrictedContainerLayout";
 import { FullContainerLayout } from "./FullContainerLayout";
 import { matchPath, useLocation } from "react-router-dom";
-import { ReactNode } from "react";
+import { PageLayoutProps } from "@/types";
 
-interface LayoutSwitcherProps {
-  children: ReactNode;
-}
-
-export const LayoutSwitcher = ({ children }: LayoutSwitcherProps) => {
+export const LayoutSwitcher = ({ children }: PageLayoutProps) => {
   const location = useLocation();
   console.log(location.pathname);
   const isPhoneDetailsPage = !!matchPath("/phones/:id", location.pathname);
