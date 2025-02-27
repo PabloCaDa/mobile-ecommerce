@@ -1,3 +1,5 @@
+import { PaginatedQuery } from "./query";
+
 export interface IPhone {
   id: string;
   name: string;
@@ -35,4 +37,8 @@ export interface IPhoneDetails extends Omit<IPhone, "imageUrl"> {
   specs: IPhoneSpecs;
   storageOptions: IPhoneStorageOptions[];
   similarProducts: IPhone[];
+}
+
+export interface IUsePhones extends PaginatedQuery {
+  phones: IPhone[];
 }
