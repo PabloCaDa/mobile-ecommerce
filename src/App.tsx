@@ -1,14 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import routes from "./routes";
+import routes from "@/routes";
+import { LayoutSwitcher } from "@/layouts";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        {routes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element} />
-        ))}
-      </Routes>
+      <LayoutSwitcher>
+        <Routes>
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </LayoutSwitcher>
     </Router>
   );
 }
