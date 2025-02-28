@@ -11,7 +11,7 @@ describe("PhoneSearch", () => {
   });
 
   it("renders correctly", () => {
-    expect(screen.getByPlaceholderText("Search phones")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Search phones...")).toBeInTheDocument();
     expect(screen.getByText("Mocked ResultsAmount")).toBeInTheDocument();
   });
 
@@ -23,7 +23,7 @@ describe("PhoneSearch", () => {
   });
 
   it("handles clear search", () => {
-    const input = screen.getByPlaceholderText("Search phones");
+    const input = screen.getByPlaceholderText("Search phones...");
 
     fireEvent.change(input, { target: { value: "test" } });
     fireEvent.change(input, { target: { value: "" } });
