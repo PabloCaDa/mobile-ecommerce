@@ -81,7 +81,7 @@
   "lint-staged": {
     "**/{src,test}/**/*.{ts,tsx,js,jsx,json,md}": [
       "eslint --fix",
-      "jest --bail --findRelatedTests",
+      "jest --clearCache && NODE_OPTIONS='--no-deprecation' jest --bail --findRelatedTests",
       "prettier --write"
     ]
   }
