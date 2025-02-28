@@ -1,5 +1,5 @@
 import { Input } from "@/components/atoms/Input";
-import { ResultsAmount } from "../atoms/ResultsAmount";
+import { ResultsAmount } from "@/components/atoms/ResultsAmount";
 
 export const PhoneSearch = () => {
   const handleInputChange = (inputValue: string) => {
