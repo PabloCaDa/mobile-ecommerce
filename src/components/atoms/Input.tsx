@@ -4,7 +4,7 @@ interface InputProps {
   ariaLabel: string;
   initialValue?: string;
   name: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (inputValue: string) => void;
   onClear: () => void;
   placeholder?: string;
   type?: string;
@@ -27,8 +27,8 @@ export const Input = ({
   };
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-    onChange(event);
+    setInputValue(event.target.value || "");
+    onChange(event.target.value || "");
   };
 
   return (
