@@ -33,7 +33,9 @@ export const Button: React.FC<ButtonProps> = ({
       }`;
       break;
     case "danger":
-      buttonStyle += " border-0 py-[0px] px-[0px] text-red-500 text-start";
+      buttonStyle += ` border-0 py-[0px] px-[0px]  text-start ${
+        disabled ? "text-grey-300" : "text-red-500"
+      }`;
       break;
     default:
       buttonStyle += " bg-gray-100 text-gray-700 hover:bg-gray-200";
