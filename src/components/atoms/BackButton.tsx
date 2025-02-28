@@ -12,9 +12,12 @@ export const BackButton = () => {
   return (
     <button
       onClick={handleClick}
+      type="button"
       className="flex items-center w-[56px] h-[20px] text-xs cursor-pointer justify-between"
+      aria-label="Back to previous page"
+      title="Back"
     >
-      <ChevronLeft strokeWidth={1} size={18} />
+      <ChevronLeft strokeWidth={1} size={18} aria-hidden="true" />
       <span>{TEXTS.navbar.back.toUpperCase()}</span>
     </button>
   );
