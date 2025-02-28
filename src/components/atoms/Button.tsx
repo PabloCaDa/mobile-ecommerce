@@ -1,19 +1,21 @@
 interface ButtonProps {
-  variant: "default" | "primary" | "inverse" | "danger";
-  size: "content" | "small" | "large";
+  ariaLabel: string;
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick: () => void;
+  size: "content" | "small" | "large";
+  variant: "default" | "primary" | "inverse" | "danger";
   className?: string;
   disabled?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  variant,
-  size,
+  ariaLabel,
   children,
-  onClick,
   className = "",
   disabled = false,
+  onClick,
+  size,
+  variant,
 }) => {
   let buttonStyle = "w-full border";
 
@@ -53,9 +55,12 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      aria-disabled={disabled}
+      aria-label={ariaLabel}
       className={`${buttonStyle} ${className}`}
-      onClick={onClick}
-      disabled={disabled}
+      onClick={!disabled ? onClick : undefined}
+      role="button"
+      tabIndex={disabled ? -1 : 0}
     >
       {children}
     </button>
