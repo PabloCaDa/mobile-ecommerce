@@ -1,5 +1,6 @@
 import { Input } from "@/components/atoms/Input";
 import { ResultsAmount } from "@/components/atoms/ResultsAmount";
+import { TEXTS } from "@/constants";
 
 export const PhoneSearch = () => {
   const handleInputChange = (inputValue: string) => {
@@ -17,7 +18,7 @@ export const PhoneSearch = () => {
       <Input
         onChange={handleInputChange}
         onClear={handleClearSearch}
-        placeholder="Search phones..."
+        placeholder={TEXTS.search.searchPhonePlaceholder}
         name="search"
         ariaLabel="Search phones"
         type={""}

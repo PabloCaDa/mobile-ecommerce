@@ -4,5 +4,6 @@ export const TEXTS = {
   },
   search: {
     results: "results",
+    searchPhonePlaceholder: "Search phones...",
   },
 };
