@@ -9,10 +9,6 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
 }));
 
-jest.mock("lucide-react", () => ({
-  ChevronLeft: () => <svg />,
-}));
-
 describe("PhoneCard", () => {
   let card: HTMLElement;
   let image: HTMLElement;

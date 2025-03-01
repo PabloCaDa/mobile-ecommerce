@@ -10,10 +10,6 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
 }));
 
-jest.mock("lucide-react", () => ({
-  ChevronLeft: jest.fn(() => "logo"),
-}));
-
 const backButtonText = TEXTS.navbar.back.toUpperCase();
 
 describe("BackButton", () => {
@@ -27,7 +23,7 @@ describe("BackButton", () => {
 
   it("renders correctly", () => {
     expect(screen.getByText(backButtonText)).toBeInTheDocument();
-    expect(screen.getByText("logo")).toBeInTheDocument();
+    expect(screen.getByText("ChevronLeft logo")).toBeInTheDocument();
   });
 
   it("navigates back when clicked", () => {
