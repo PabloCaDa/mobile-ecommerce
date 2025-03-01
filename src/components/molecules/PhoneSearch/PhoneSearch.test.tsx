@@ -10,17 +10,16 @@ describe("PhoneSearch", () => {
     isPending: jest.fn(),
   });
 
-  const renderComponent = (contextValues = {}) => {
-    const defaultValues = {
-      debouncedSearch: mockDebouncedSearch,
-      resultsAmount: 0,
-      searchValue: "",
-      setResultsAmount: jest.fn(),
-      ...contextValues,
-    };
+  const defaultValues = {
+    debouncedSearch: mockDebouncedSearch,
+    resultsAmount: 0,
+    searchValue: "",
+    setResultsAmount: jest.fn(),
+  };
 
+  const renderComponent = (contextValues = {}) => {
     return render(
-      <SearchContext.Provider value={defaultValues}>
+      <SearchContext.Provider value={{ ...defaultValues, ...contextValues }}>
         <PhoneSearch />
       </SearchContext.Provider>,
     );
@@ -63,7 +62,7 @@ describe("PhoneSearch", () => {
   it("renders ResultsAmount when there are results", () => {
     renderComponent({ resultsAmount: 5 });
 
-    expect(screen.getByText("5")).toBeInTheDocument();
+    expect(screen.getByText("5 RESULTS")).toBeInTheDocument();
   });
 
   it("does not render ResultsAmount when there are no results", () => {

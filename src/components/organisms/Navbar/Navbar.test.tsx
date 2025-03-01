@@ -2,11 +2,6 @@ import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Navbar } from "./Navbar";
 
-jest.mock("lucide-react", () => ({
-  ShoppingCart: jest.fn(() => "shopping-cart"),
-  ChevronLeft: jest.fn(() => "back"),
-}));
-
 jest.mock("@/assets/logo.svg", () => "mock-logo");
 
 describe("Navbar", () => {

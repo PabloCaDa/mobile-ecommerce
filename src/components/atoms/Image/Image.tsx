@@ -14,18 +14,16 @@ const Image = ({
   handleOnError,
 }: ImageProps) => {
   return (
-    <div>
-      <img
-        src={imageUrl}
-        alt={`${name} picture`}
-        className={className}
-        loading="lazy"
-        onLoad={handleOnLoad}
-        onError={handleOnError}
-        role="img"
-        aria-label={`${name} picture`}
-      />
-    </div>
+    <img
+      src={imageUrl}
+      alt={`${name} picture`}
+      className={className}
+      loading="lazy"
+      onLoad={handleOnLoad}
+      onError={handleOnError}
+      role="img"
+      aria-label={`${name} picture`}
+    />
   );
 };
 

@@ -25,7 +25,7 @@ export const PhoneCard = memo(({ phone }: { phone: IPhone }) => {
   };
 
   return (
-    <article
+    <div
       className="relative w-full bg-transparent overflow-hidden pt-[100%] aspect-square outline-1 group font-thin border-collapse"
       onClick={handleClick}
       onKeyDown={handleKeyPress}
@@ -40,6 +40,6 @@ export const PhoneCard = memo(({ phone }: { phone: IPhone }) => {
           <CardPhoneDetails brand={brand} name={name} basePrice={basePrice} />
         </div>
       </div>
-    </article>
+    </div>
   );
 });
