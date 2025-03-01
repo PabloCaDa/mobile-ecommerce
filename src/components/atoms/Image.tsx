@@ -1,14 +1,11 @@
-const Image = ({
-  imageUrl,
-  name,
-  className,
-  handleOnLoad,
-}: {
+interface ImageProps {
   imageUrl: string;
   name: string;
   className?: string;
   handleOnLoad?: () => void;
-}) => {
+}
+
+const Image = ({ imageUrl, name, className, handleOnLoad }: ImageProps) => {
   return (
     <div>
       <img
