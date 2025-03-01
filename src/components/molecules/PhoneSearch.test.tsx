@@ -1,32 +1,74 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { PhoneSearch } from "@/components/molecules/PhoneSearch";
-
-jest.mock("@/components/atoms/ResultsAmount", () => ({
-  ResultsAmount: jest.fn(() => <div>Mocked ResultsAmount</div>),
-}));
+import { PhoneSearch } from "@/components/molecules";
+import { SearchContext } from "@/contexts";
+import { TEXTS } from "@/constants";
 
 describe("PhoneSearch", () => {
+  const mockDebouncedSearch = Object.assign(jest.fn(), {
+    cancel: jest.fn(),
+    flush: jest.fn(),
+    isPending: jest.fn(),
+  });
+
+  const renderComponent = (contextValues = {}) => {
+    const defaultValues = {
+      debouncedSearch: mockDebouncedSearch,
+      resultsAmount: 0,
+      searchValue: "",
+      setResultsAmount: jest.fn(),
+      ...contextValues,
+    };
+
+    return render(
+      <SearchContext.Provider value={defaultValues}>
+        <PhoneSearch />
+      </SearchContext.Provider>,
+    );
+  };
+
   beforeEach(() => {
-    render(<PhoneSearch />);
+    jest.clearAllMocks();
   });
 
-  it("renders correctly", () => {
-    expect(screen.getByPlaceholderText("Search phones...")).toBeInTheDocument();
-    expect(screen.getByText("Mocked ResultsAmount")).toBeInTheDocument();
-  });
+  it("renders correctly with initial values", () => {
+    renderComponent();
 
-  it("handles input change", () => {
-    const input = screen.getByPlaceholderText("Search phones...");
-
-    fireEvent.change(input, { target: { value: "test" } });
-    expect(input).toHaveValue("test");
-  });
-
-  it("handles clear search", () => {
-    const input = screen.getByPlaceholderText("Search phones...");
-
-    fireEvent.change(input, { target: { value: "test" } });
-    fireEvent.change(input, { target: { value: "" } });
+    const input = screen.getByPlaceholderText(
+      TEXTS.search.searchPhonePlaceholder,
+    );
+    expect(input).toBeInTheDocument();
     expect(input).toHaveValue("");
+  });
+
+  it("calls debouncedSearch when typing", () => {
+    renderComponent();
+
+    const input = screen.getByPlaceholderText(
+      TEXTS.search.searchPhonePlaceholder,
+    );
+    fireEvent.change(input, { target: { value: "iPhone" } });
+
+    expect(mockDebouncedSearch).toHaveBeenCalledWith("iPhone");
+  });
+
+  it("calls debouncedSearch with an empty string when clearing input", () => {
+    renderComponent({ searchValue: "Samsung" });
+
+    const clearButton = screen.getByRole("button", { name: /clear/i });
+    fireEvent.click(clearButton);
+
+    expect(mockDebouncedSearch).toHaveBeenCalledWith("");
+  });
+
+  it("renders ResultsAmount when there are results", () => {
+    renderComponent({ resultsAmount: 5 });
+
+    expect(screen.getByText("5")).toBeInTheDocument();
+  });
+
+  it("does not render ResultsAmount when there are no results", () => {
+    renderComponent({ resultsAmount: 0 });
+
+    expect(screen.queryByText(/\d+/)).not.toBeInTheDocument();
   });
 });

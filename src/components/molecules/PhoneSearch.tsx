@@ -1,17 +1,19 @@
 import { Input } from "@/components/atoms/Input";
 import { ResultsAmount } from "@/components/atoms/ResultsAmount";
 import { TEXTS } from "@/constants";
+import { SearchContext } from "@/contexts";
+import { use } from "react";
 
 export const PhoneSearch = () => {
+  const { debouncedSearch, resultsAmount, searchValue } = use(SearchContext);
+
   const handleInputChange = (inputValue: string) => {
-    console.log(inputValue);
+    debouncedSearch(inputValue);
   };
 
   const handleClearSearch = () => {
-    console.log("");
+    debouncedSearch("");
   };
-
-  const resultsAmount = 10;
 
   return (
     <div className="w-full flex flex-col items-start sticky pt-1 z-10 bg-white">
@@ -22,6 +24,7 @@ export const PhoneSearch = () => {
         name="search"
         ariaLabel="Search phones"
         type={""}
+        initialValue={searchValue}
       />
 
       {!!resultsAmount && <ResultsAmount resultsAmount={resultsAmount} />}
