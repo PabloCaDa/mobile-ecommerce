@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { PhoneSearch } from "@/components/molecules";
 import { BackButton } from "@/components/atoms";
 
-export const NavBar = () => {
+export const Navbar = () => {
   const location = useLocation();
 
   const isPhonesPage = location.pathname === "/phones";

@@ -3,6 +3,7 @@ import routes from "@/routes";
 import { LayoutSwitcher } from "@/layouts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SearchProvider } from "@/contexts";
+import { Navbar } from "./components/organisms";
 
 const queryClient = new QueryClient();
 
@@ -11,6 +12,7 @@ function App() {
     <Router>
       <QueryClientProvider client={queryClient}>
         <SearchProvider>
+          <Navbar />
           <LayoutSwitcher>
             <Routes>
               {routes.map((route, index) => (

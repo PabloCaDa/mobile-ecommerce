@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { NavBar } from "./Navbar";
+import { Navbar } from "./Navbar";
 
 jest.mock("lucide-react", () => ({
   ShoppingCart: jest.fn(() => "shopping-cart"),
@@ -9,11 +9,11 @@ jest.mock("lucide-react", () => ({
 
 jest.mock("@/assets/logo.svg", () => "mock-logo");
 
-describe("NavBar", () => {
+describe("Navbar", () => {
   it("renders logo and shopping cart link", () => {
     const { getByAltText, getByRole } = render(
       <MemoryRouter initialEntries={["/phones"]}>
-        <NavBar />
+        <Navbar />
       </MemoryRouter>,
     );
 
@@ -24,7 +24,7 @@ describe("NavBar", () => {
   it("renders PhoneSearch component on /phones route", () => {
     const { getByPlaceholderText } = render(
       <MemoryRouter initialEntries={["/phones"]}>
-        <NavBar />
+        <Navbar />
       </MemoryRouter>,
     );
 
@@ -34,7 +34,7 @@ describe("NavBar", () => {
   it("renders BackButton component on non-/phones route", () => {
     const { getByRole } = render(
       <MemoryRouter initialEntries={["/other"]}>
-        <NavBar />
+        <Navbar />
       </MemoryRouter>,
     );
 
