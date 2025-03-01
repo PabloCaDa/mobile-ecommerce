@@ -3,9 +3,16 @@ interface ImageProps {
   name: string;
   className?: string;
   handleOnLoad?: () => void;
+  handleOnError?: () => void;
 }
 
-const Image = ({ imageUrl, name, className, handleOnLoad }: ImageProps) => {
+const Image = ({
+  imageUrl,
+  name,
+  className,
+  handleOnLoad,
+  handleOnError,
+}: ImageProps) => {
   return (
     <div>
       <img
@@ -14,6 +21,9 @@ const Image = ({ imageUrl, name, className, handleOnLoad }: ImageProps) => {
         className={className}
         loading="lazy"
         onLoad={handleOnLoad}
+        onError={handleOnError}
+        role="img"
+        aria-label={`${name} picture`}
       />
     </div>
   );

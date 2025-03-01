@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Image from "./Image";
 
 describe("Image component", () => {
@@ -16,5 +16,29 @@ describe("Image component", () => {
 
     const imgElement = screen.getByRole("img");
     expect(imgElement).toHaveClass("test-class");
+  });
+
+  it("calls handleOnLoad when image loads", () => {
+    const handleOnLoad = jest.fn();
+    render(
+      <Image imageUrl="test.jpg" name="Test" handleOnLoad={handleOnLoad} />,
+    );
+
+    const imgElement = screen.getByRole("img");
+    fireEvent.load(imgElement);
+
+    expect(handleOnLoad).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls handleOnError when image fails to load", () => {
+    const handleOnError = jest.fn();
+    render(
+      <Image imageUrl="test.jpg" name="Test" handleOnError={handleOnError} />,
+    );
+
+    const imgElement = screen.getByRole("img");
+    fireEvent.error(imgElement);
+
+    expect(handleOnError).toHaveBeenCalledTimes(1);
   });
 });
