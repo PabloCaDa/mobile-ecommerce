@@ -11,13 +11,13 @@ describe("Button component", () => {
         variant="default"
       >
         Default
-      </Button>
+      </Button>,
     );
 
     const button = getByText("Default");
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
-      "w-full border bg-gray-100 text-gray-700 hover:bg-gray-200 text-xs"
+      "w-full border bg-gray-100 text-gray-700 hover:bg-gray-200 text-xs",
     );
   });
 
@@ -30,13 +30,13 @@ describe("Button component", () => {
         variant="primary"
       >
         Primary
-      </Button>
+      </Button>,
     );
 
     const button = getByText("Primary");
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
-      "w-full border py-[5px] px-[7px] border-black-100 bg-black-100 text-white h-[48px] text-xs"
+      "w-full border py-[5px] px-[7px] border-black-100 bg-black-100 text-white h-[48px] text-xs",
     );
   });
 
@@ -49,13 +49,13 @@ describe("Button component", () => {
         variant="inverse"
       >
         Inverse
-      </Button>
+      </Button>,
     );
 
     const button = getByText("Inverse");
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
-      "w-full border py-[5px] px-[7px] bg-white text-black-100 border-black-300 h-[56px]"
+      "w-full border py-[5px] px-[7px] bg-white text-black-100 border-black-300 h-[56px]",
     );
   });
 
@@ -68,13 +68,13 @@ describe("Button component", () => {
         variant="danger"
       >
         Danger
-      </Button>
+      </Button>,
     );
 
     const button = getByText("Danger");
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
-      "w-full border border-0 py-[0px] px-[0px] text-red-500 text-start text-xs"
+      "w-full border border-0 py-[0px] px-[0px] text-red-500 text-start text-xs",
     );
   });
 
@@ -88,7 +88,7 @@ describe("Button component", () => {
         variant="default"
       >
         Click me
-      </Button>
+      </Button>,
     );
 
     const button = getByText("Click me");
@@ -107,13 +107,13 @@ describe("Button component", () => {
         variant="primary"
       >
         Disabled
-      </Button>
+      </Button>,
     );
 
     const button = getByText("Disabled");
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
-      "w-full border py-[5px] px-[7px] border-black-100 bg-grey-200 border-grey-200 text-grey-300 h-[48px] text-xs"
+      "w-full border py-[5px] px-[7px] border-black-100 bg-grey-200 border-grey-200 text-grey-300 h-[48px] text-xs",
     );
 
     fireEvent.click(button);

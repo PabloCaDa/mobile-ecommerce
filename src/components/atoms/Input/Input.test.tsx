@@ -15,7 +15,7 @@ describe("Input", () => {
         onClear={handleClear}
         type="text"
         placeholder="test placeholder"
-      />
+      />,
     );
   });
 

@@ -1,5 +1,5 @@
-import { Input } from "@/components/atoms/Input";
-import { ResultsAmount } from "@/components/atoms/ResultsAmount";
+import { Input } from "@/components/atoms/Input/Input";
+import { ResultsAmount } from "@/components/atoms/ResultsAmount/ResultsAmount";
 import { TEXTS } from "@/constants";
 import { SearchContext } from "@/contexts";
 import { use } from "react";
