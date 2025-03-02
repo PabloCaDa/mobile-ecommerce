@@ -2,8 +2,6 @@ import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Navbar } from "./Navbar";
 
-jest.mock("@/assets/logo.svg", () => "mock-logo");
-
 describe("Navbar", () => {
   it("renders logo and shopping cart link", () => {
     const { getByAltText, getByRole } = render(

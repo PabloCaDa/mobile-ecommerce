@@ -1,6 +1,6 @@
 export interface Query {
   isLoading: boolean;
-  error: any;
+  error: Error | null;
 }
 
 export interface PaginatedQuery extends Query {

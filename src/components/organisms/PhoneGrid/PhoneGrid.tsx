@@ -21,7 +21,7 @@ export const PhonesGrid = ({
   `;
 
   const verticalStyle = `w-full lg:max-width-[1700px] 
-    mb-10 mt-1 pl-[1px] pr-[1px] pb-[1px] pt-[1px] 
+    mt-1 pl-[1px] pr-[1px] pb-[1px] pt-[1px] 
     grid  grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-[1px]`;
 
   return (

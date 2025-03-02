@@ -13,16 +13,6 @@ jest.mock("@/lib/api/client", () => ({
   delete: jest.fn(),
 }));
 
-jest.mock("@/config", () => {
-  return jest.fn((key: "VITE_API_BASE_URL" | "VITE_API_KEY") => {
-    const env = {
-      VITE_API_BASE_URL: "https://api.example.com",
-      VITE_API_KEY: "test-api-key",
-    };
-    return env[key];
-  });
-});
-
 describe("phoneService", () => {
   describe("getPhones", () => {
     let result: IPhone[];
@@ -36,7 +26,7 @@ describe("phoneService", () => {
 
       it("should fetch phones with default parameters", async () => {
         expect(apiClient.get).toHaveBeenCalledWith(
-          "products?limit=20&offset=0"
+          "products?limit=20&offset=0",
         );
         expect(result).toEqual(mockPhonesFixture);
       });
@@ -51,7 +41,7 @@ describe("phoneService", () => {
 
       it("should fetch phones with search parameter", async () => {
         expect(apiClient.get).toHaveBeenCalledWith(
-          "products?limit=20&offset=0&search=test"
+          "products?limit=20&offset=0&search=test",
         );
         expect(result).toEqual(mockPhonesFixture);
       });
