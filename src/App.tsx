@@ -4,6 +4,7 @@ import { LayoutSwitcher } from "@/layouts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SearchProvider } from "@/contexts";
 import { Navbar } from "./components/organisms";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const queryClient = new QueryClient();
 
