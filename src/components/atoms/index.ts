@@ -8,3 +8,4 @@ export * from "./Input/Input";
 export * from "./PhoneImage/PhoneImage";
 export * from "./PhoneTitle/PhoneTitle";
 export * from "./ResultsAmount/ResultsAmount";
+export * from "./StorageButton/StorageButton";
