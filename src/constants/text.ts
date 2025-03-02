@@ -12,4 +12,7 @@ export const TEXTS = {
   storagePicker: {
     storageMessage: "storage ¿how much space do you need?.",
   },
+  addPhoneButton: {
+    addPhoneButtonMessage: "add",
+  },
 };
