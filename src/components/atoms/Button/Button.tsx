@@ -1,11 +1,12 @@
 interface ButtonProps {
   ariaLabel: string;
   children: React.ReactNode;
-  onClick: () => void;
-  size: "content" | "small" | "large";
-  variant: "default" | "primary" | "inverse" | "danger";
   className?: string;
   disabled?: boolean;
+  onClick: () => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
+  size: "content" | "small" | "large";
+  variant: "default" | "primary" | "inverse" | "danger";
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = "",
   disabled = false,
   onClick,
+  onKeyPress,
   size,
   variant,
 }) => {
@@ -63,6 +65,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={!disabled ? onClick : undefined}
       role="button"
       tabIndex={disabled ? -1 : 0}
+      onKeyDown={!disabled ? onKeyPress : undefined}
     >
       {children}
     </button>
