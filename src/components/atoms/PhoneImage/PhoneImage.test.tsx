@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react";
-import { PhoneDetailsImage } from "./PhoneImage";
+import { PhoneImage } from "./PhoneImage";
 
 describe("PhoneDetailsImage", () => {
   it("renders correctly with given props and styles", () => {
     const { getByAltText, container } = render(
-      <PhoneDetailsImage imageUrl="test-url" name="test-name" />,
+      <PhoneImage imageUrl="test-url" name="test-name" />,
     );
 
     const image = getByAltText("test-name picture");
