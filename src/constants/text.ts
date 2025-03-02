@@ -9,4 +9,7 @@ export const TEXTS = {
   colorPicker: {
     colorMesage: "color. pick your favourite.",
   },
+  storagePicker: {
+    storageMessage: "storage ¿how much space do you need?.",
+  },
 };
