@@ -22,7 +22,14 @@ export const mockPhoneFixture: IPhoneDetails = {
   name: "Phone name",
   brand: "Phone Brand",
   basePrice: 100,
-  colorOptions: [],
+  colorOptions: [
+    { name: "Phone color", hexCode: "Phone hex code", imageUrl: "Phone image" },
+    {
+      name: "Phone color 2",
+      hexCode: "Phone hex code 2",
+      imageUrl: "Phone image 2",
+    },
+  ],
   description: "Phone description",
   rating: 5,
   specs: {
@@ -35,6 +42,15 @@ export const mockPhoneFixture: IPhoneDetails = {
     os: "Phone OS",
     screenRefreshRate: "Phone screen refresh rate",
   },
-  storageOptions: [],
+  storageOptions: [
+    {
+      capacity: "Phone storage",
+      price: 100,
+    },
+    {
+      capacity: "Phone storage 2",
+      price: 200,
+    },
+  ],
   similarProducts: [],
 };

@@ -1,6 +1,6 @@
 import Image from "@/components/atoms/Image/Image";
 
-export const PhoneDetailsImage = ({
+export const PhoneImage = ({
   imageUrl,
   name,
 }: {
