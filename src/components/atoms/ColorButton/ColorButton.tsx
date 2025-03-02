@@ -32,6 +32,12 @@ export const ColorButton = ({
         onMouseEnter={() => onHover(option)}
         onMouseLeave={() => onHover(null)}
         style={{ backgroundColor: option.hexCode }}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            onColorChange(option);
+          }
+        }}
       />
     </div>
   );
