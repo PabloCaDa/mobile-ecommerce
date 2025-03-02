@@ -6,4 +6,7 @@ export const TEXTS = {
     results: "results",
     searchPhonePlaceholder: "Search phones...",
   },
+  colorPicker: {
+    colorMesage: "color. pick your favourite.",
+  },
 };
