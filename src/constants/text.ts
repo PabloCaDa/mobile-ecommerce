@@ -10,6 +10,9 @@ export const TEXTS = {
     colorMesage: "color. pick your favourite.",
   },
   storagePicker: {
-    storageMessage: "storage ¿how much space do you need?.",
+    storageMessage: "storage ¿how much space do you need?",
+  },
+  addPhoneButton: {
+    addPhoneButtonMessage: "add",
   },
 };
