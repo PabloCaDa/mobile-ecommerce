@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { getPhoneById } from "@/lib/api/services/phoneService";
 import { IPhoneDetails, IUsePhone } from "@/types/phone";
 
@@ -7,10 +7,9 @@ export const usePhone = (id: string): IUsePhone => {
     data: phone,
     isLoading,
     error,
-  } = useQuery({
+  } = useSuspenseQuery({
     queryKey: ["phone", id],
     queryFn: () => getPhoneById(id),
-    enabled: !!id,
   });
 
   return {
