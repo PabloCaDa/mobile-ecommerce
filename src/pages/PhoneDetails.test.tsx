@@ -9,12 +9,25 @@ jest.mock("@/components/organisms/PhoneSelector/PhoneSelector", () => ({
   PhoneSelector: () => <div data-testid="phone-selector">Phone Selector</div>,
 }));
 
+jest.mock(
+  "@/components/organisms/SpecificationsTable/SpecificationsTable",
+  () => ({
+    SpecificationsTable: () => (
+      <div data-testid="specifications-table">Specifications Table</div>
+    ),
+  }),
+);
+
+jest.mock("@/components/organisms/SimilarProducts/SimilarProducts", () => ({
+  SimilarProducts: () => (
+    <div data-testid="similar-products">Similar Products</div>
+  ),
+}));
+
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: jest.fn(),
 }));
-
-//TODO: Update test to loading state
 
 const renderComponent = (id = "123") => {
   (reactRouterDom.useParams as jest.Mock).mockReturnValue({ id });
@@ -22,9 +35,16 @@ const renderComponent = (id = "123") => {
 };
 
 describe("PhoneDetails", () => {
-  it("renders PhoneSelector when phone data is loaded successfully", async () => {
+  it("renders PhoneSelector, SpecificationsTable, and SimilarProducts when phone data is loaded successfully", async () => {
     (usePhone as jest.Mock).mockReturnValue({
-      phone: { id: "123", name: "Test Phone" },
+      phone: {
+        id: "123",
+        name: "Test Phone",
+        specs: {},
+        brand: "Test Brand",
+        description: "Test Description",
+        similarProducts: [],
+      },
       error: null,
     });
 
@@ -32,6 +52,8 @@ describe("PhoneDetails", () => {
 
     await waitFor(() => {
       expect(screen.getByTestId("phone-selector")).toBeInTheDocument();
+      expect(screen.getByTestId("specifications-table")).toBeInTheDocument();
+      expect(screen.getByTestId("similar-products")).toBeInTheDocument();
     });
   });
 
