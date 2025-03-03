@@ -20,7 +20,7 @@ export const mockPhonesFixture: IPhone[] = [
 export const mockPhoneFixture: IPhoneDetails = {
   id: "1",
   name: "Phone name",
-  brand: "Phone Brand",
+  brand: "Phone brand",
   basePrice: 100,
   colorOptions: [
     { name: "Phone color", hexCode: "Phone hex code", imageUrl: "Phone image" },
@@ -52,5 +52,20 @@ export const mockPhoneFixture: IPhoneDetails = {
       price: 200,
     },
   ],
-  similarProducts: [],
+  similarProducts: [
+    {
+      id: "2",
+      name: "Similar product name",
+      brand: "Similar product brand",
+      imageUrl: "Similar product url",
+      basePrice: 100,
+    },
+    {
+      id: "3",
+      name: "Similar product 2 name",
+      brand: "Similar product 2 brand",
+      imageUrl: "Similar product 2 url",
+      basePrice: 200,
+    },
+  ],
 };
