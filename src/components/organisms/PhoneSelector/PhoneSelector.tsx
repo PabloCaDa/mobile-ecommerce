@@ -1,17 +1,22 @@
 import { AddPhoneButton, PhoneImage, PhoneTitle } from "@/components/atoms";
 import { ColorPicker, StoragePicker } from "@/components/molecules";
+import { CartContext } from "@/contexts";
 import {
   IPhoneColorOptions,
   IPhoneDetails,
   IPhoneStorageOptions,
 } from "@/types";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface PhoneSelectorProps {
   phone: IPhoneDetails;
 }
 
 export const PhoneSelector = ({ phone }: PhoneSelectorProps) => {
+  const { addToCart } = use(CartContext);
+  const navigate = useNavigate();
+
   const [storage, setStorage] = useState<IPhoneStorageOptions>({
     capacity: "",
     price: 0,
@@ -43,6 +48,19 @@ export const PhoneSelector = ({ phone }: PhoneSelectorProps) => {
     setColor(color);
   };
 
+  const handleAddToCart = () => {
+    addToCart({
+      id: phone.id,
+      name: phone.name,
+      color: color.name,
+      imageUrl: color.imageUrl,
+      price,
+      storage: storage.capacity,
+    });
+
+    navigate("/cart");
+  };
+
   return (
     <section className="flex flex-col lg:flex-row items-center justify-between w-full mb-4 lg:mb-10 lg:mt-8">
       <PhoneImage
@@ -67,7 +85,7 @@ export const PhoneSelector = ({ phone }: PhoneSelectorProps) => {
           activeColor={color}
         />
         <AddPhoneButton
-          handleOnClick={() => {}}
+          handleOnClick={handleAddToCart}
           disabled={!(!!storage.capacity && !!color.name)}
         />
       </div>

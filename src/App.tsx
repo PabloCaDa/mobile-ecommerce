@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import routes from "@/routes";
 import { LayoutSwitcher } from "@/layouts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SearchProvider } from "@/contexts";
+import { CartProvider, SearchProvider } from "@/contexts";
 import { Navbar } from "./components/organisms";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -13,14 +13,20 @@ function App() {
     <Router>
       <QueryClientProvider client={queryClient}>
         <SearchProvider>
-          <Navbar />
-          <LayoutSwitcher>
-            <Routes>
-              {routes.map((route, index) => (
-                <Route key={index} path={route.path} element={route.element} />
-              ))}
-            </Routes>
-          </LayoutSwitcher>
+          <CartProvider>
+            <Navbar />
+            <LayoutSwitcher>
+              <Routes>
+                {routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={route.element}
+                  />
+                ))}
+              </Routes>
+            </LayoutSwitcher>
+          </CartProvider>
         </SearchProvider>
       </QueryClientProvider>
     </Router>
