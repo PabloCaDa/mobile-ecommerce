@@ -21,4 +21,8 @@ export const TEXTS = {
   similarProducts: {
     title: "similar items",
   },
+  cartItem: {
+    removeButton: "remove",
+    quantity: "quantity",
+  },
 };
