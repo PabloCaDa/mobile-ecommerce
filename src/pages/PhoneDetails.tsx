@@ -1,9 +1,12 @@
 import { usePhone } from "@/hooks/phones/usePhone";
 import { useParams } from "react-router-dom";
-import { PhoneSelector } from "@/components/organisms/PhoneSelector/PhoneSelector";
 import { Suspense } from "react";
 import Skeleton from "react-loading-skeleton";
-import { SimilarProducts, SpecificationsTable } from "@/components/organisms";
+import {
+  SimilarProducts,
+  SpecificationsTable,
+  PhoneSelector,
+} from "@/components/organisms";
 
 const SkeletonPhoneSelector = () => {
   return (
