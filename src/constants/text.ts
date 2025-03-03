@@ -15,4 +15,10 @@ export const TEXTS = {
   addPhoneButton: {
     addPhoneButtonMessage: "add",
   },
+  specoficationsTable: {
+    title: "specifications",
+  },
+  similarProducts: {
+    title: "similar items",
+  },
 };
