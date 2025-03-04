@@ -7,10 +7,10 @@ interface CartItemListProps {
 
 export const CartItemList = ({ cart }: CartItemListProps) => {
   return (
-    <div className="flex-grow">
+    <ul className="flex-grow">
       {cart.map((cartItem) => (
         <CartItem key={cartItem.ref} cartItem={cartItem} />
       ))}
-    </div>
+    </ul>
   );
 };
