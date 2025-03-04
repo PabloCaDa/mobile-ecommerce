@@ -3,11 +3,16 @@ import logo from "@/assets/logo.svg";
 import { useLocation } from "react-router-dom";
 import { PhoneSearch } from "@/components/molecules";
 import { BackButton } from "@/components/atoms";
+import { use } from "react";
+import { CartContext } from "@/contexts";
 
 export const Navbar = () => {
+  const { cart } = use(CartContext);
   const location = useLocation();
 
   const isPhonesPage = location.pathname === "/phones";
+
+  const isCartFull = !!cart.length;
 
   return (
     <nav
@@ -21,8 +26,9 @@ export const Navbar = () => {
         </a>
         <div className="flex justify-between items-center w-[38px] h-[23px]">
           <a aria-label="Shopping cart" href="/cart">
-            <ShoppingCart />
+            <ShoppingCart fill={`${isCartFull ? "#000" : "transparent"}`} />
           </a>
+          {isCartFull && <span>{cart.length}</span>}
         </div>
       </div>
       {isPhonesPage ? (

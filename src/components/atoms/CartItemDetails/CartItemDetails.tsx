@@ -13,7 +13,7 @@ export const CartItemDetails = ({
   handleOnClick,
 }: CartItemDetailsProps) => {
   return (
-    <div className="w-[160px] lg:w-[246px] h-[195px] mt-1 flex flex-col lg:justify-between self-start items-start">
+    <div className="w-[160px] lg:w-[246px] h-[195px] mt-2 lg:mt-1 flex flex-col lg:justify-between self-start items-start">
       <div className="mb-1 lg:mb-2">
         <p>{cartItem.name.toUpperCase()}</p>
         <p>
