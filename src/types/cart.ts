@@ -12,5 +12,5 @@ export interface ICartItem {
 export interface ICartContext {
   cart: ICartItem[];
   addToCart: (itemToAdd: Omit<ICartItem, "quantity" | "ref">) => void;
-  removeFromCart: (phoneId: string) => void;
+  removeFromCart: (itemRef: string) => void;
 }

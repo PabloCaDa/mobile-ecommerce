@@ -13,7 +13,7 @@ export const CartItemDetails = ({
   handleOnClick,
 }: CartItemDetailsProps) => {
   return (
-    <div className="w-[160px] lg:w-[246px] h-[195px] mt-1 flex flex-col lg:justify-between self-start items-start">
+    <div className="w-[160px] lg:w-[246px] h-[195px] mt-2 lg:mt-1 flex flex-col lg:justify-between self-start items-start">
       <div className="mb-1 lg:mb-2">
         <p>{cartItem.name.toUpperCase()}</p>
         <p>
@@ -22,7 +22,7 @@ export const CartItemDetails = ({
       </div>
       <div className="mb-1 lg:mb-2">
         <p>
-          {TEXTS.cartItem.quantity.toUpperCase()}: {cartItem.quantity}
+          {TEXTS.cart.quantity.toUpperCase()}: {cartItem.quantity}
         </p>
         <p>{cartItem.price * cartItem.quantity} EUR</p>
       </div>
@@ -33,7 +33,7 @@ export const CartItemDetails = ({
           size="content"
           ariaLabel="Remove item from cart"
         >
-          {startcase(TEXTS.cartItem.removeButton)}
+          {startcase(TEXTS.cart.removeButton)}
         </Button>
       </div>
     </div>
