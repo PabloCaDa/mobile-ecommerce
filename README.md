@@ -1,50 +1,103 @@
-# React + TypeScript + Vite
+# Mobile E-Commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React application for purcharsing mobile phones.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Installation](#installation)
+- [Available Scripts](#available-scripts)
+- [Main Dependencies](#main-dependencies)
+- [Development Dependencies](#development-dependencies)
+- [Running the test suite](#running-the-test-suite)
+- [Production](#production)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
-- Configure the top-level `parserOptions` property like this:
+Follow these steps to set up the project:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone the repository:
+
+```
+git clone <REPOSITORY_URL>
+cd mobile-ecommerce
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Install the dependencies:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```
+yarn install
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+3. Environment variables setting
+
+Set the following variables in your .env
+
+```
+VITE_API_KEY=<api key>
+VITE_API_BASE_URL=<api base url>
+NODE_ENV='development'
+```
+
+4. Start the development server:
+
+```
+yarn run dev
+```
+
+---
+
+## Available Scripts
+
+In the `package.json` file, the following scripts are defined:
+
+| Script             | Description                                                             |
+| ------------------ | ----------------------------------------------------------------------- |
+| `yarn run dev`     | Starts the development server with Vite.                                |
+| `yarn run build`   | Compiles the project using TypeScript and generates an optimized build. |
+| `yarn run lint`    | Runs ESLint to analyze the code for errors or bad practices.            |
+| `yarn run preview` | Serves the generated build locally for previewing.                      |
+| `yarn run test`    | Runs tests using Jest with custom configuration.                        |
+
+---
+
+## Main Dependencies
+
+These are the main libraries used in this project:
+
+- **React**: ^19.0.0 - Primary library for building user interfaces.
+- **React Query**: ^5.66.9 - Efficient handling of asynchronous state.
+- **Axios**: ^1.8.1 - HTTP client for making API requests.
+- **TailwindCSS**: ^4.0.6 - CSS framework for fast and customizable styling.
+- **React Router DOM**: 6 - Router for managing application navigation.
+
+---
+
+## Development Dependencies
+
+The project includes several tools to enhance the development experience:
+
+- **Vite**: ^6.1.0 - Fast build tool for modern applications.
+- **TypeScript**: ~5.7.2 - Static type checking for JavaScript.
+- **ESLint**: ^9.19.0 - Linter for maintaining clean and consistent code.
+- **Prettier**: 3.5.2 - Code formatter.
+- **Jest**: ^29.7.0 - Framework for unit testing.
+- **Testing Library**: Set of tools for testing React components.
+
+## Running the test suite
+
+In order to run the test suite execute the following command:
+
+```
+yarn test
+```
+
+## Production
+
+The app can be build and preview through the following commands:
+
+```
+yarn run build
+yarn run preview
 ```
