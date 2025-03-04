@@ -8,8 +8,8 @@ This project is a React application for purcharsing mobile phones.
 - [Available Scripts](#available-scripts)
 - [Main Dependencies](#main-dependencies)
 - [Development Dependencies](#development-dependencies)
-- [Running the test suite](#testing-configuration)
-- [Production](#testing-configuration)
+- [Running the test suite](#running-the-test-suite)
+- [Production](#production)
 
 ---
 
@@ -91,7 +91,6 @@ In order to run the test suite execute the following command:
 
 ```
 yarn test
-
 ```
 
 ## Production
@@ -101,5 +100,4 @@ The app can be build and preview through the following commands:
 ```
 yarn run build
 yarn run preview
-
 ```
