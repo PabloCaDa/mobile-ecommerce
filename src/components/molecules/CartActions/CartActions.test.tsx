@@ -12,7 +12,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("CartActions", () => {
-  it.only("renders ContinueShoppingButton when cart is empty", () => {
+  it("renders ContinueShoppingButton when cart is empty", () => {
     (useWindowSize as jest.Mock).mockReturnValue({ width: 1024 });
 
     render(<CartActions cartLength={0} totalPrice={0} />);
