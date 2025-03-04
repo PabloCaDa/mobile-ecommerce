@@ -1,67 +1,93 @@
-import { render, screen } from "@testing-library/react";
+import React from "react";
+import { render, act } from "@testing-library/react";
 import { CartProvider, CartContext } from "./CartContext";
-import { useContext } from "react";
+import { ICartItem } from "@/types";
+import { cartFixture } from "@/test/__fixtures__/cart";
 
-const TestComponent = () => {
-  const { cart, addToCart, removeFromCart } = useContext(CartContext);
+const localStorageMock = (() => {
+  let store: { [key: string]: string } = {};
+  return {
+    getItem: (key: string) => store[key] || null,
+    setItem: (key: string, value: string) => {
+      store[key] = value.toString();
+    },
+    clear: () => {
+      store = {};
+    },
+  };
+})();
 
-  return (
-    <div>
-      <button
-        onClick={() =>
-          addToCart({
-            id: "1",
-            name: "Test Item",
-            color: "Red",
-            storage: "64GB",
-            price: 100,
-            imageUrl: "",
-          })
-        }
-      >
-        Add to Cart
-      </button>
-      <button onClick={() => removeFromCart("1Red64GB")}>
-        Remove from Cart
-      </button>
-      <div data-testid="cart-items">{JSON.stringify(cart)}</div>
-    </div>
-  );
-};
+Object.defineProperty(window, "localStorage", { value: localStorageMock });
 
-describe("CartContext", () => {
+afterEach(() => jest.clearAllMocks());
+
+describe("CartProvider", () => {
   beforeEach(() => {
     localStorage.clear();
   });
 
-  it("should add an item to the cart", () => {
-    render(
+  it("provides initial empty cart", () => {
+    const { getByText } = render(
       <CartProvider>
-        <TestComponent />
+        <CartContext.Consumer>
+          {({ cart }) => <div>Cart items: {cart.length}</div>}
+        </CartContext.Consumer>
       </CartProvider>,
     );
 
-    const addButton = screen.getByText("Add to Cart");
-    addButton.click();
-
-    const cartItems = screen.getByTestId("cart-items");
-    expect(cartItems.textContent).toContain("Test Item");
+    expect(getByText("Cart items: 0")).toBeInTheDocument();
   });
 
-  it("should remove an item from the cart", () => {
-    render(
+  it("adds item to cart", () => {
+    const TestComponent = () => {
+      const { cart, addToCart } = React.useContext(CartContext);
+      return (
+        <>
+          <div>Cart items: {cart.length}</div>
+          <button onClick={() => addToCart(cartFixture[0])}>Add to cart</button>
+        </>
+      );
+    };
+
+    const { getByText } = render(
       <CartProvider>
         <TestComponent />
       </CartProvider>,
     );
 
-    const addButton = screen.getByText("Add to Cart");
-    addButton.click();
+    expect(getByText("Cart items: 0")).toBeInTheDocument();
+    act(() => {
+      getByText("Add to cart").click();
+    });
+    expect(getByText("Cart items: 1")).toBeInTheDocument();
+  });
 
-    const removeButton = screen.getByText("Remove from Cart");
-    removeButton.click();
+  it("removes item from cart", () => {
+    const initialCart: ICartItem[] = cartFixture;
+    localStorage.setItem("cart", JSON.stringify(initialCart));
 
-    const cartItems = screen.getByTestId("cart-items");
-    expect(cartItems.textContent).not.toContain("Test Item");
+    const TestComponent = () => {
+      const { cart, removeFromCart } = React.useContext(CartContext);
+      return (
+        <>
+          <div>Cart items: {cart.length}</div>
+          <button onClick={() => removeFromCart("1PhonecolorPhonestorage")}>
+            Remove from cart
+          </button>
+        </>
+      );
+    };
+
+    const { getByText } = render(
+      <CartProvider>
+        <TestComponent />
+      </CartProvider>,
+    );
+
+    expect(getByText("Cart items: 2")).toBeInTheDocument();
+    act(() => {
+      getByText("Remove from cart").click();
+    });
+    expect(getByText("Cart items: 1")).toBeInTheDocument();
   });
 });

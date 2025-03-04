@@ -44,7 +44,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const removeFromCart = (itemRef: string) => {
-    console.log(itemRef);
     setCart((prevCart) => {
       return prevCart.filter((item) => item.ref !== itemRef);
     });
