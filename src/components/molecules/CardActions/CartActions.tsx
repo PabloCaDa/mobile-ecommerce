@@ -33,7 +33,7 @@ export const CartActions = ({
         <div className="w-full md:w-[500px] flex flex-col md:flex-row items-center justify-between">
           <div className="flex justify-between w-full md:w-[150px] text-lg mb-2 md:mb-0">
             <span>TOTAL</span>
-            <span>{totalPrice} EUR</span>
+            <span aria-label="Total cart price">{totalPrice} EUR</span>
           </div>
 
           <div className="flex w-full md:w-auto gap-1">
