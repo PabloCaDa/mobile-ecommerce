@@ -8,7 +8,7 @@ export const CartItem = ({ cartItem }: { cartItem: ICartItem }) => {
   const { removeFromCart } = use(CartContext);
 
   return (
-    <section className="flex flex-col items-start text-xs mb-1">
+    <li className="flex flex-col items-start text-xs mb-1">
       <div className="h-[196px] flex items-start justify-between max-w-screen lg:w-[548px] lg:h-[246px]">
         <CartItemImage
           imageUrl={cartItem.imageUrl}
@@ -18,6 +18,6 @@ export const CartItem = ({ cartItem }: { cartItem: ICartItem }) => {
 
         <CartItemDetails cartItem={cartItem} handleOnClick={removeFromCart} />
       </div>
-    </section>
+    </li>
   );
 };

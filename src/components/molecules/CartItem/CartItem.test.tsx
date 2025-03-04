@@ -47,7 +47,7 @@ describe("CartItem", () => {
   it("calls removeFromCart when remove button is clicked", () => {
     renderComponent();
     const removeButton = screen.getByRole("button", {
-      name: startcase(TEXTS.cartItem.removeButton).toUpperCase(),
+      name: startcase(TEXTS.cart.removeButton).toUpperCase(),
     });
 
     fireEvent.click(removeButton);
