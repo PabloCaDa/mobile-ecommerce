@@ -21,8 +21,11 @@ export const TEXTS = {
   similarProducts: {
     title: "similar items",
   },
-  cartItem: {
+  cart: {
     removeButton: "remove",
     quantity: "quantity",
+    continueShopping: "continue shopping",
+    payButton: "pay",
+    title: "cart",
   },
 };
