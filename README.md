@@ -21,7 +21,7 @@ Follow these steps to set up the project:
 1. Clone the repository:
 
 ```
-git clone <REPOSITORY_URL>
+git clone https://github.com/PabloCaDa/mobile-ecommerce.git
 cd mobile-ecommerce
 ```
 
