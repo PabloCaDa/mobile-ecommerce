@@ -52,8 +52,6 @@ const renderPhonesComponent = async ({
   });
 };
 
-//TODO: Update test to check renderings on loading and when loaded
-
 describe("Phones page", () => {
   it("calls setResultsAmount when phones change", async () => {
     await renderPhonesComponent({

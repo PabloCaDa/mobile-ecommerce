@@ -8,6 +8,7 @@ This project is a React application for purcharsing mobile phones.
 - [Available Scripts](#available-scripts)
 - [Main Dependencies](#main-dependencies)
 - [Development Dependencies](#development-dependencies)
+- [Project Structure](#project-structure)
 - [Running the test suite](#running-the-test-suite)
 - [Production](#production)
 
@@ -84,6 +85,29 @@ The project includes several tools to enhance the development experience:
 - **Prettier**: 3.5.2 - Code formatter.
 - **Jest**: ^29.7.0 - Framework for unit testing.
 - **Testing Library**: Set of tools for testing React components.
+
+## Project Structure
+
+The basic structure of the project is as follows:
+
+```
+├── src/
+│ ├── components/ # Reusable components
+│ ├── config/ # Help out reading variables from env
+│ ├── constants/ # Text constatns of the app
+│ ├── contexts/ # Contexts to manage data across components
+│ ├── pages/ # Main pages
+│ ├── hooks/ # Custom hooks
+│ ├── layouts/ # Templates
+│ ├── libs/ # Utilities, auxiliary functions and api files
+│ ├── setupTests.ts # Initial setup for Jest
+│ ├── types/ # Interfaces and types from the app
+├── public/ # Public static files
+├── package.json # Project configuration and dependencies
+├── tsconfig.json # TS configuration
+├── vite.config.ts # Vite configuration
+
+```
 
 ## Running the test suite
 
